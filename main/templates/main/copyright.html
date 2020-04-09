@@ -1,0 +1,52 @@
+{# This template renders copyrights for Pur Beurre Website #}
+
+{% extends 'index.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block header %}
+<!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+		<h2 class="text-uppercase text-white font-weight-bold">{{ title }}</h2>
+		<div class="col-lg-12 align-self-baseline">
+			<h3 class="text-white mt-0">{{ h2_1 }}</h3>
+				<p class="text-white-75 font-weight-light mb-0">{{ p1_1 }}</p>
+				<p class="text-white-75 font-weight-light mb-0">{{ p1_2 }}</p>
+				<p class="text-white-75 font-weight-light mb-0">{{ p1_3 }}</p>
+			<h3 class="text-white mt-0">{{ h2_2 }}</h3>
+				<p class="text-white-75 font-weight-light mb-0">{{ p2_1 }}</p>
+				<p class="text-white-75 font-weight-light mb-0">{{ p2_2 }}</p>
+				<p class="text-white-75 font-weight-light mb-0">{{ p2_3 }}</p>
+		       <h3 class="text-white mt-0">{{ h2_3 }}</h3>
+				<p class="text-white-75 font-weight-light mb-0">{{ p3_1 }}</p>
+		       <h3 class="text-white mt-0">{{ h2_4 }}</h3>
+				<p class="text-white-75 font-weight-light mb-0">{{ p4_1 }}</p>
+				<p class="text-white-75 font-weight-light mb-0">{{ p4_2 }}</p>
+				<p class="text-white-75 font-weight-light mb-0">{{ p4_3 }}</p>
+		</div>
+	</div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block contact %}
+<section class="page-section" id=story>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+	<h2 class="text-white mt-0">{{ name }}</h2>
+		  <hr class="divider light my-4">
+		  <p class="text-white-50 mb-2">{{ icons_copy }}</p>
+		  <p class="text-white-50 mb-2">{{ photo_copy }}</p>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

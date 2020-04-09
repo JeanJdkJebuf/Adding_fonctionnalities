@@ -1,0 +1,215 @@
+@import "creative.min.css";
+
+/* Thanks to this website : https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0 navbar colors are now accorded to Pur Beurre chart. */
+/* This style applies for main page */
+.navbar {
+  background-color: #de9440;
+}
+.navbar .navbar-brand {
+  color: #345a61;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #86ebe6;
+}
+.navbar .navbar-text {
+  color: #345a61;
+}
+.navbar .navbar-text a {
+  color: #86ebe6;
+}
+.navbar .navbar-text a:hover,
+.navbar .navbar-text a:focus {
+  color: #86ebe6; 
+}
+.navbar .navbar-nav .nav-link {
+  color: #345a61;
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #86ebe6;
+}
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+  color: #86ebe6;
+  background-color: #345a61;
+}
+.navbar .navbar-toggle {
+  border-color: #345a61;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #345a61;
+}
+.navbar .navbar-toggle .navbar-toggler-icon {
+  color: #345a61;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #345a61;
+}
+.navbar .navbar-link {
+  color: #345a61;
+}
+.navbar .navbar-link:hover {
+  color: #86ebe6;
+}
+
+@media (max-width: 575px) {
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #345a61;
+  }
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #86ebe6;
+  }
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #86ebe6;
+    background-color: #345a61;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #345a61;
+  }
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #86ebe6;
+  }
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #86ebe6;
+    background-color: #345a61;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #345a61;
+  }
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #86ebe6;
+  }
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #86ebe6;
+    background-color: #345a61;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #345a61;
+  }
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #86ebe6;
+  }
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #86ebe6;
+    background-color: #345a61;
+  }
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
+  color: #345a61;
+}
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+  color: #86ebe6;
+}
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
+  color: #86ebe6;
+  background-color: #345a61;
+}
+
+/* This style applies for main page, for the following id's */
+
+#story {
+    background-color:#345A61;
+}
+
+#contact {
+    background-color:#C45525;
+}
+
+/* This styles apply for the result_research view */
+* {
+ box-sizing: border-box;
+ }
+/* Style for results */
+
+.result {
+ width: 200px;
+ height: 270px;
+ margin: 25px;
+ background-color: #eee;
+ padding: 25px;
+}
+
+.result-image {
+ width: 150px;
+ height: 150px;
+ position: relative;
+}
+
+.product-image {
+ object-fit: cover;
+ width: 150px;
+ height: 150px
+}
+
+.product-nutriscore {
+ position: absolute;
+ top: -15px;
+ right: -15px;
+ width: 30px;
+ height: 30px;
+ line-height: 30px;
+ text-align: center;
+ background-color: red;
+ color: white;
+ border-radius: 50%;
+}
+
+/* style for log_in view */
+.log-style {
+    background-color:#C45525;
+}
+
+/* changing header. Below are new ones. */
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* Container holding the image and the text */
+.container-header {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 100%;
+  padding: 1em;
+}
+.container-header > img {
+  width: 100%;
+}
+.header-image {
+    height: 200px;
+    width: 1200px;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+/* Allows autocompletion nav bar to be infront of navbar color */
+.ui-autocomplete { z-index:2000 !important; }

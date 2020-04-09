@@ -1,0 +1,65 @@
+{# This page is the template for consult_favorites view #}
+{% extends 'index.html' %}
+
+{% block title %}{{ consult_fav_title }}{% endblock%}
+
+{% block header %}
+<div class="container-header">
+{% load static %}
+  <img src="{% static "img/bg-masthead.jpg" %}" alt="Snow" style="width:100%;" height="300" width="1500" class="header-image">
+  <div class="centered"><h5>{{ title }}</h5></div>
+</div>
+
+{% endblock %}
+
+{% block contact %}
+
+<section class="page-section" id="services">
+    <div class="container">
+      <h2 class="text-center mt-0">{{ name }}</h2>
+      <hr class="divider my-4">
+
+      <div class="row">
+        {% for product in favorites %}
+        <div class="col-lg-4 col-sm-6">
+          <div class="result">
+          <div class="result-image">
+            <img src={{ product.substitute.img_front_url }} class="product-image">
+
+            <div class="product-nutriscore">&#{{ product.substitute.nutri_grade }};</div>
+          </div>
+          
+          <a title={{ product.substitute.product_name }} href="{% url 'detail' product.substitute.id %}">{{ product.substitute.product_name|truncatechars:"25" }}</a>
+
+
+          </div>
+        </div>
+        {# if there's no results #}
+        {% empty %}
+        <li> {{ no_product }}</li>
+        {% endfor %}
+      </div>
+        </div>
+    <div class="container">
+           <div class="row h-100 align-items-center justify-content-center text-center">
+	           <div class="text-black-75 font-weight-light mb-5">
+		    <div class="pagination">
+		       {% if favorites.has_previous %}
+				       <a href="{% url 'consult_favorites' favorites.previous_page_number %}">{{ previous }}</a> -
+				       {% endif %}
+				       
+				       {% if favorites.has_previous or favorites.has_next  %}
+				       <span class="current">
+					   Page {{ favorites.number }} {{ on }} {{ favorites.paginator.num_pages }}
+				       </span>
+				       {% endif %}
+
+				       {% if favorites.has_next %}
+				       - <a href="{% url 'consult_favorites' favorites.next_page_number %}">{{ next }}</a>
+			       </div>
+       </div>
+       </div>
+       {% endif %}
+    </div>
+</section>
+{% endblock %}

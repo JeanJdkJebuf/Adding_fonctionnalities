@@ -1,0 +1,43 @@
+<!-- This file provides login informations -->
+{% extends 'index.html' %}
+
+{% block title %} {{ log_title }} {% endblock %}
+
+{% block header %}
+<section class="page-section bg-primary" id="log-style">
+    <div class="container">
+      <div class="row justify-content-center">
+	      <div class="col-lg-8 text-center">
+		{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		    {% endfor %}
+		</ul>
+		{% endif %}
+	      </div>
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">{{ log_in_temp.welc_title }}</h2>
+          <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">
+	  <form method="post" action="{% url 'log_in' %}?next={{ redirect_url }}">
+		  {% csrf_token %}
+		  {{ form.as_p }}
+		  <button type="submit" class="btn btn-dark">{{ log_in_temp.button_connect }}</button>
+	  </form>
+	  </p>
+	  <hr class="divider light my-4">
+        </div>
+	<div class="col-lg-8 text-center">
+	{{ text_create_acc }}
+	</div>
+	<div class="col-lg-8 text-center">
+	{% if not user.is_authenticated %}
+		  <a href="{% url 'create_user' %}" class="btn btn-dark">{{ create_acc }}</a>
+		  {% endif %}
+	</div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
