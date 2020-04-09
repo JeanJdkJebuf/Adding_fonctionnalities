@@ -1,0 +1,60 @@
+<!-- Taken from
+https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
+huge thanks to them for making me understand how it works. -->
+{% extends 'index.html' %}
+
+{% block title %} {{ create_title }} {% endblock %}
+
+{% block header %}
+
+<section class="page-section bg-primary" id="log-style">
+    <div class="container">
+      <div class="row justify-content-center">
+	      <div class="col-lg-8 text-center">
+		{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		    {% endfor %}
+		</ul>
+		{% endif %}
+	      </div>
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">{{ create_user_temp.welc_title }}</h2>
+         
+	  <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">{{ create_user_temp.temp_one }}</p>
+	
+	  <hr class="divider light my-4">
+	</div>
+
+	<div class="col-lg-8">
+		{% if not user.is_authenticated %}
+		<form method="post">
+		  {% csrf_token %}
+		  {% for field in form %}
+		    <p>
+		      {{ field.label_tag }}<br>
+		      {{ field }}
+		      {% if field.help_text %}
+			  <small style="color: black">{{ field.help_text }}</small>
+			{% endif %}
+			{% for error in field.errors %}
+			  <p style="color: red">{{ error }}</p>
+			{% endfor %}
+		    </p>
+			{% endfor %}
+			<button type="submit" class="btn btn-dark">{{ create_user_temp.confirm }}</button>
+			{% endif %}
+
+		  {% if user.is_authenticated %}
+		  <p> {{ create_user_temp.already_logged_in }} </p>
+		  {% endif %}
+		</form>
+	</div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

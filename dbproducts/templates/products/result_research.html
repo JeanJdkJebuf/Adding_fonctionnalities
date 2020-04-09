@@ -1,0 +1,62 @@
+{# this html file will display results of research bar from research_substitute view #}
+
+{# imports template #}
+{% extends 'index.html' %}
+
+{# changes title of the page #}
+{% block title %}
+{{ research_title }}
+{% endblock %}
+
+{# This block will display old product informations #}
+{% block header %}
+<div class="container-header">
+  <img src={{ header_image_url }} alt="Snow" style="width:100%;" height="300" width="1500" class="header-image">
+  <div class="centered"><h5>{{ title }}{{ old_prod.product_name|truncatechars:"35" }}</h5></div>
+</div>
+{% endblock %}
+
+{# This block will display all results for the research #}
+{% block contact %}
+
+<section class="page-section" id="services">
+    <div class="container">
+      <h2 class="text-center mt-0">{{ name }}</h2>
+      <hr class="divider my-4">
+
+      <div class="row">
+      {% for substitute in results %}
+        <div class="col-lg-4 col-sm-6">
+          <div class="result">
+          <div class="result-image">
+            <img src={{ substitute.img_front_url }} class="product-image">
+
+            <div class="product-nutriscore">&#{{ substitute.nutri_grade }};</div>
+          </div>
+          
+          <a title={{ substitute.product_name }} href="{% url 'detail' substitute.id %}">{{ substitute.product_name|truncatechars:"25" }}</a>
+
+          {# button for adding this substitute to favorites #}
+          {% if user.is_authenticated %}
+          <form action="/favorites/add_favorites/" method="post">
+              {% csrf_token %}
+              <input name="prev_prod" type="hidden" value="{{ old_prod.id }}">
+              <input name="new_sub" type="hidden" value="{{ substitute.id }}">
+
+              <div class="col-md-4 text-center"> 
+                  <button type="submit" class="btn btn-primary">{{ add_fav }}</button> 
+              </div>
+          </form>
+          {% endif %}
+
+          </div>
+        </div>
+
+        {# if there's no results #}
+        {% empty %}
+        <li> {{ no_result }}</li>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+{% endblock %}

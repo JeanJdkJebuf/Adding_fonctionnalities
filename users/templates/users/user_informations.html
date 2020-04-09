@@ -1,0 +1,30 @@
+{# This file displays informations for the  view #}
+{% extends 'index.html' %}
+
+{% block title %}{{ consult_title }}{% endblock %}
+
+{% block research %}
+<h1 class="text-uppercase text-white font-weight-bold">{{ title_profile }}</h1>
+          <hr class="divider my-4">
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+            <h2 class="text-white mt-0">{{ username }}</h2>
+            <p class="text-white-75 font-weight-light mb-5">{{ user.username }}</p>
+	    {% if user.first_name %}        
+            <hr class="divider my-4">
+            <h2 class="text-white mt-0">{{ info_user }}</h2>
+            <p class="text-white-75 font-weight-light mb-5">{{ user.first_name }}</p>
+            <p class="text-white-75 font-weight-light mb-5">{{ user.last_name }}</p>
+	    {% endif %}
+{% endblock %}
+
+{% block contact %}
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">{{ name }}</h2>
+        <p class="text-black-75 font-weight-light mb-5 text-center">{{ user.email }}</p>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+coverage = "*"
+
+[packages]
+django = "*"
+psycopg2-binary = "*"
+django-extensions = "*"
+requests = "*"
+unidecode = "*"
+
+[requires]
+python_version = "3.6"

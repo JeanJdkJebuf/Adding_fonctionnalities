@@ -1,0 +1,12 @@
+<!-- Research bar for substitutes -->
+
+
+{% block content %}
+{# Script for search function #}
+</script>
+
+<form id=”search” method="get" action="{% url 'research_substitute' %}">
+    <input id="txtSearch" class="txtSearch" type="text" name="txtSearch"> 
+    <button type="submit" class="btn btn-dark btn-submit">OK</button>
+</form>
+{% endblock %}
