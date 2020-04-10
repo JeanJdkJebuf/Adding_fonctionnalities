@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, update_session_auth_hash, l
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from users.forms import CustomUserCreationForm, ConnexionForm
+from users.forms import CustomUserCreationForm, ConnexionForm, CustomUserChangeForm, CustomUserChangePassword
 
 def create_user(request):
     """ This function will be used to display a template for user creation"""
@@ -85,9 +85,71 @@ def user_informations(request):
         "username":"Identifiant",
         "info_user":"Profil de l'utilisateur",
         "name":"Adresse mail",
+        "modify":"Modifier mes informations",
     }
     DICTIO["user"] = request.user
     return render(request,
                   "users/user_informations.html",
                   DICTIO,
                  )
+
+@login_required(login_url='/users/log_in/')
+def edit_profile(request):
+    """ This function will display a template for user deletion"""
+    DICTIO = {
+        "change_info_temp":{
+            "welc_title": "Informations du compte",
+            "modif_one":"Vous pouvez changer les informations ci-dessous",
+            "apply_advert":"Pour appliquer les changements, veuillez appuyer sur \
+sur le bouton ci-dessous",
+            "passw":"changer password",
+            "confirm":"confirmer",
+        }
+    }
+
+    if "passw" in request.POST:
+        return redirect("change_password")
+
+    if request.method == "POST" and "confirm" in request.POST:
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Le profil a été mis à jour")
+            return redirect("edit_profile")
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+        DICTIO["form"] = form
+    return render(request,
+                  "users/edit_profile.html",
+                  DICTIO,
+                 )
+
+@login_required(login_url='/users/log_in/')
+def change_password(request):
+    """ changing user's password"""
+    DICTIO = {
+        "change_passw":{
+            "change_pass_title":"Changement de mot de passe",
+            "confirm_pass":"Confirmer",
+        }
+    }
+
+    if request.method == "POST":
+        form = CustomUserChangePassword(request.user, request.POST)
+
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "Votre mot de passe est mis à jour")
+            return redirect("change_password")
+        else:
+            DICTIO["form"] = form
+
+    else:
+        form = CustomUserChangePassword(request.user)
+        DICTIO["form"] = form
+    return render(request,
+                  'users/change_password.html',
+                  DICTIO,
+                  )

@@ -11,4 +11,9 @@ urlpatterns = [
     path("disconnect_user/", views.disconnect_user, name="disconnect_user"),
     # user_informations
     path("user_informations/", views.user_informations, name="user_informations"),
+    # edit_user
+    path("edit_profile/", views.edit_profile, name="edit_profile"),
+    # modify password
+    path("edit_profile/change_password/", views.change_password, name="change_password"),
+
 ]

@@ -23,6 +23,12 @@
     <div class="container">
         <h2 class="text-center mt-0">{{ name }}</h2>
         <p class="text-black-75 font-weight-light mb-5 text-center">{{ user.email }}</p>
+
+	<form class="text-center mt-0" method="post" action="{% url 'edit_profile' %}">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-dark btn-submit">{{ modify }}</button>
+	</form>
+
       </div>
     </div>
 </section>

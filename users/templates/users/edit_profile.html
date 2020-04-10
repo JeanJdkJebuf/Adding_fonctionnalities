@@ -1,0 +1,41 @@
+{# This template will display user's ability to change his informations #}
+
+{% block content %}
+<h1>
+{{ change_info_temp.welc_title }}
+</h1>
+<p> {{ change_info_temp.temp_one }} </p>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+    <p>
+    {{ form.username.label_tag }}<br>
+    {{ form.username }}
+        <small style="color:grey"> {{ form.username.help_text }}</small>
+    </p>
+
+    <p>
+    {{ form.email.label_tag }}<br>
+    {{ form.email }}
+        <small style="color:grey"> {{ form.email.help_text }}</small>
+    </p>
+
+    {% for field in form %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+    {% endfor %}
+    <button type="submit" name="passw"> {{ change_info_temp.passw }}</button>
+
+  <p><small> {{ change_info_temp.apply_advert }} </small></p>
+  <button type="submit" name="confirm">{{ change_info_temp.confirm }}</button>
+</form>
+{% endblock %}
