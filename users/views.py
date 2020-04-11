@@ -97,6 +97,8 @@ def user_informations(request):
 def edit_profile(request):
     """ This function will display a template for user deletion"""
     DICTIO = {
+        "create_title":"Edition du profil",
+        "text_change_password":"Pour changer le mot de passe, c'est ici",
         "change_info_temp":{
             "welc_title": "Informations du compte",
             "modif_one":"Vous pouvez changer les informations ci-dessous",
@@ -129,6 +131,7 @@ sur le bouton ci-dessous",
 def change_password(request):
     """ changing user's password"""
     DICTIO = {
+        "create_title":"Edition du mot de passe",
         "change_passw":{
             "change_pass_title":"Changement de mot de passe",
             "confirm_pass":"Confirmer",

@@ -1,41 +1,70 @@
 {# This template will display user's ability to change his informations #}
+{% extends 'index.html' %}
 
-{% block content %}
-<h1>
-{{ change_info_temp.welc_title }}
-</h1>
-<p> {{ change_info_temp.temp_one }} </p>
+{% block title %} {{ create_title }} {% endblock %}
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% block header %}
+<section class="page-section bg-primary" id="log-style">
+    <div class="container">
+      <div class="row justify-content-center">
+	      <div class="col-lg-8 text-center">
+		{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		    {% endfor %}
+		</ul>
+		{% endif %}
+	      </div>
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">{{ change_info_temp.welc_title }}</h2>
+         
+	  <hr class="divider light my-4">
+          <p class="text mb-4">{{ change_info_temp.modif_one }}</p>
+	</div>
 
-<form method="post">
-  {% csrf_token %}
-    <p>
-    {{ form.username.label_tag }}<br>
-    {{ form.username }}
-        <small style="color:grey"> {{ form.username.help_text }}</small>
-    </p>
+	<div class="col-lg-8">
+		<form method="post">
+		  {% csrf_token %}
+		    <p>
+		    {{ form.username.label_tag }}<br>
+		    {{ form.username }}
+			<small style="color:black"> {{ form.username.help_text }}</small>
+		    </p>
 
-    <p>
-    {{ form.email.label_tag }}<br>
-    {{ form.email }}
-        <small style="color:grey"> {{ form.email.help_text }}</small>
-    </p>
+		    <p>
+		    {{ form.email.label_tag }}<br>
+		    {{ form.email }}
+			<small style="color:black"> {{ form.email.help_text }}</small>
+		    </p>
+		<p>
+		    {{ form.first_name.label_tag }}<br>
+		    {{ form.first_name }}
+			<small style="color:black"> {{ form.first_name.help_text }}</small>
+		    </p>
 
-    {% for field in form %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-    {% endfor %}
-    <button type="submit" name="passw"> {{ change_info_temp.passw }}</button>
+		    <p>
+		    {{ form.last_name.label_tag }}<br>
+		    {{ form.last_name }}
+			<small style="color:black"> {{ form.last_name.help_text }}</small>
+		    </p>
 
-  <p><small> {{ change_info_temp.apply_advert }} </small></p>
-  <button type="submit" name="confirm">{{ change_info_temp.confirm }}</button>
-</form>
+		    {% for field in form %}
+			{% for error in field.errors %}
+			  <p style="color: red">{{ error }}</p>
+			{% endfor %}
+		    {% endfor %}
+		  <p><small> {{ change_info_temp.apply_advert }} </small></p>
+		  <button type="submit" class="btn btn-dark" name="confirm">{{ change_info_temp.confirm }}</button>
+		  <hr class="divider light my-4">
+		  <p><small> {{ text_change_password }}</small></p>
+		  <button type="submit" class="btn btn-dark" name="passw"> {{ change_info_temp.passw }}</button>
+
+
+		</form>
+	</div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}
