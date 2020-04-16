@@ -69,21 +69,22 @@ class UsersAppTestCase(TestCase):
         self.client.login(username='testuser', password='12345')
         response = self.client.get(reverse('edit_profile'))
         self.assertEqual(response.status_code, 200)
-    def test_edit_profile_changes_data(self):
-        """this test will make sure url "edit_profile" actually edits something"""
-        self.client.login(username='testuser', password='12345')
-        form = {"username":"testuser",
-                "password1":"12345",
-                "password2":"12345",
-                'email':"g@g.com",
-                'first_name':"jean",
-                'last_name':"",
-               }
-        response = self.client.post(reverse('edit_profile'),
-                                    form,
-                                   )
-        user = CustomUser.objects.get(username="testuser")
-        self.assertEqual(user.email, "g@g.com")
+
+        def test_edit_profile_changes_data(self):
+            """this test will make sure url "edit_profile" actually edits something"""
+            self.client.login(username='testuser', password='12345')
+            form = {"username":"testuser",
+                    "password1":"12345",
+                    "password2":"12345",
+                    'email':"g@g.com",
+                    'first_name':"jean",
+                    'last_name':"",
+                   }
+            response = self.client.post(reverse('edit_profile'),
+                                        form,
+                                       )
+            user = CustomUser.objects.get(username="testuser")
+            self.assertEqual(user.email, "g@g.com")
 
     def test_edit_password_page(self):
         """ this test will make sure url 'change_password' returns template"""
@@ -94,13 +95,21 @@ class UsersAppTestCase(TestCase):
     def test_edit_password_works(self):
         """ this test will make sure url 'change_password' returns template"""
         self.client.login(username='testuser', password='12345')
-        form = {"username":"testuser",
-                "password1":"azer123456",
-                "password2":"azer123456",
-                'email':"",
-                'first_name':"",
-                'last_name':"",
+        form = {"old_password":"12345",
+                "new_password1":"azer123456",
+                "new_password2":"azer123456",
                }
-        self.client.post(reverse('change_password'), form)
+        response = self.client.post(reverse('change_password'), form)
+        test_password = CustomUser.objects.get(username="testuser")
+        self.assertEqual(response.status_code, 302)
+
+    def test_edit_password_works_name(self):
+        """ this test will make sure url 'change_password' returns template"""
+        self.client.login(username='testuser', password='12345')
+        form = {"old_password":"12345",
+                "new_password1":"azer123456",
+                "new_password2":"azer123456",
+               }
+        response = self.client.post(reverse('change_password'), form)
         test_password = CustomUser.objects.get(username="testuser")
         self.assertTrue(test_password.check_password("azer123456"))

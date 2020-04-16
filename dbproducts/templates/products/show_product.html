@@ -34,6 +34,14 @@
     <div class="col-lg-8 text-center">
       <hr class="divider my-4">
       <a href={{ info.web_link}} class="btn btn-info" role="button">{{ link_off }}</a>
+
+      {# Adding a way to see researched product, for Adding functionnalities project #}
+      {% if old_prod.id %}
+          <hr class="divider my-4">
+          <p> {{ catchphrase_for_prev_product }}
+          <a title={{ old_prod.product_name }} href="{% url 'detail' old_prod.id %}">c'est ici</a>
+          </p>
+      {% endif %}
     </div>
   </div>
 

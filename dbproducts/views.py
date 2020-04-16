@@ -55,7 +55,7 @@ def research_substitute(request):
     except MultiValueDictKeyError:
         return render(request, "main/main.html")
 
-def detail(request, product_id):
+def detail(request, product_id, previousprod_id=""):
     """ product_id is given from dbproducts/urls.py
     kwargs is given from template/products/result_research.py
     kwargs is here used to give old product info """
@@ -64,12 +64,21 @@ def detail(request, product_id):
         "nutriscore":"Nutriscore",
         "name":"lien vers OpenFoodFacts",
         "link_off":"Voir la fiche d'OpenFoodFacts",
+        "catchphrase_for_prev_product":"Lien vers le produit substitué ",
     }
+    # Adding previousprod_id for Adding functionnalities project
+    if previousprod_id:
+        try:
+            old_prod = Product.objects.get(id=previousprod_id)
+            DICTIO["old_prod"] = old_prod
+        except ObjectDoesNotExist:
+            pass
+
     try:
         info_prod = Product.objects.get(id=product_id)
         DICTIO["nutri_score"] = str(chr(info_prod.nutri_grade))
         DICTIO["info"] = info_prod
-        DICTIO["header_image_url"]=info_prod.img_front_url.replace("400", "full")
+        DICTIO["header_image_url"] = info_prod.img_front_url.replace("400", "full")
         return render(request, "products/show_product.html", DICTIO)
 
     except ObjectDoesNotExist:

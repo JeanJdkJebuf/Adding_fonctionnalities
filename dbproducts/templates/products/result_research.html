@@ -34,7 +34,7 @@
             <div class="product-nutriscore">&#{{ substitute.nutri_grade }};</div>
           </div>
           
-          <a title={{ substitute.product_name }} href="{% url 'detail' substitute.id %}">{{ substitute.product_name|truncatechars:"25" }}</a>
+          <a title={{ substitute.product_name }} href="{% url 'detail' substitute.id  old_prod.id%}">{{ substitute.product_name|truncatechars:"25" }}</a>
 
           {# button for adding this substitute to favorites #}
           {% if user.is_authenticated %}

@@ -36,6 +36,7 @@ Vous y fournirez les informations suivantes :
 ⋅⋅* la variable "BDD" devra contenir le nom de la base de données créée
 ⋅⋅* "PW_POSTGRES" contiendra le mot de passe de l'utilisateur
 ⋅⋅* "USER" fournira le nom de l'utilisateur
+..* "SECRET_KEY" contiendra la clé de production
 
 3. **Créer et peupler la bdd**
 Faire les commandes suivantes :
