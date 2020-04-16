@@ -52,6 +52,16 @@ python manage.py populate_db
 
 4. **Lancer le serveur**
 ```python
-python manage.py populate_db
+python manage.py runserver
 ```
 *Note : La page principale se trouve à l'adresse suivante : /main/homepage/
+
+## Tests unitaires
+
+Pour lancer les tests unitaires :
+* pipenv shell
+* coverage run --source='.' manage.py test
+* coverage report
+
+## Informations diverses
+Pour toute information concernant ce projet, veuillez me contacter par mail.
