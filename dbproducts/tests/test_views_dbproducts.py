@@ -103,3 +103,22 @@ product if more than one contains that name"""
         response = self.client.get(reverse('autocomplete'), \
                                            {"term":self.product_tested.product_name})
         self.assertEqual(response.status_code, 200)
+
+    # Adding tests for new functionnality
+    def test_detail_renders_old_prod(self):
+        """ this test will make sure view 'detail' renders good status code (so
+        it renders the good template"""
+
+        product_id = self.product_tested.id
+        previousprod_id = self.fake_result.id
+        response = self.client.get(reverse('detail', args=(product_id, previousprod_id)))
+        self.assertEqual(response.status_code, 200)
+
+    def test_detail_includes_previousprod_id_errors(self):
+        """ this test will make sure view 'detail' renders good status code if
+        previousprod_id's id is wrong"""
+
+        product_id = self.product_tested.id
+        previousprod_id = 123456215545858
+        response = self.client.get(reverse('detail', args=(product_id, previousprod_id)))
+        self.assertEqual(response.status_code, 200)

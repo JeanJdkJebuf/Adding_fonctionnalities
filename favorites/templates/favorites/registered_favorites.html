@@ -29,7 +29,7 @@
             <div class="product-nutriscore">&#{{ product.substitute.nutri_grade }};</div>
           </div>
           
-          <a title={{ product.substitute.product_name }} href="{% url 'detail' product.substitute.id %}">{{ product.substitute.product_name|truncatechars:"25" }}</a>
+          <a title={{ product.substitute.product_name }} href="{% url 'detail' product.substitute.id product.original_prod.id %}">{{ product.substitute.product_name|truncatechars:"25" }}</a>
 
 
           </div>
